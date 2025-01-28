@@ -39,3 +39,61 @@ The designs were created to the following widths:
 - Weights: 400, 500, 700
 
 > 💎 [Upgrade to Pro](https://www.frontendmentor.io/pro?ref=style-guide) for design file access to see all design details and get hands-on experience using a professional workflow with tools like Figma. */
+
+:root {
+  /* Primary */
+  --marine-blue: hsl(213, 96%, 18%);
+  --purplish-blue: hsl(243, 100%, 62%);
+  --astel-blue: hsl(228, 100%, 84%);
+  --light-blue: hsl(206, 94%, 87%);
+  --strawberry-red: hsl(354, 84%, 57%);
+
+  /* Neutral */
+  --cool-gray: hsl(231, 11%, 63%);
+  --light-gray: hsl(229, 24%, 87%);
+  --magnolia: hsl(217, 100%, 97%);
+  --alabaster: hsl(231, 100%, 99%);
+  --white: hsl(0, 0%, 100%);
+
+  --default-font-size: 16px;
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  src: url('../assets/fonts/Ubuntu-Regular.ttf') format('truetype'),
+    url('../assets/fonts/Ubuntu-Medium.ttf') format('truetype'),
+    url('../assets/fonts/Ubuntu-Bold.ttf') format('truetype');
+  font-weight: 400, 500, 700;
+  font-style: normal;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: var(--default-font-size);
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--magnolia);
+}
+
+.sub-container {
+  width: 75%;
+  height: 75%;
+  display: flex;
+  padding: 1rem;
+
+  background-color: var(--white);
+  border-radius: 15px;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+}
