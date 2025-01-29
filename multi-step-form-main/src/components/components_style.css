@@ -133,7 +133,6 @@
 }
 
 .custom__button__back {
-  /* align-self: flex-start; */
   padding: 1rem 1.5rem;
   font-weight: 700;
   color: var(--cool-gray);
@@ -145,5 +144,53 @@
 }
 
 .custom__button__back:hover {
+  color: var(--marine-blue);
+}
+
+/* PlanCard */
+.plan__card {
+  width: 220px;
+  height: 250px;
+  padding: 1.3rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid var(--light-gray);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.plan__card--icon {
+  width: 60px;
+  height: 60px;
+}
+
+.plan__card--icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.plan__card--info {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+}
+
+.plan__card--info h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--marine-blue);
+}
+
+.plan__card--info p {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--cool-gray);
+}
+
+.plan__card--info p.last {
+  font-size: 1rem;
   color: var(--marine-blue);
 }

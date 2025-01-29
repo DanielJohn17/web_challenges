@@ -38,3 +38,62 @@
 }
 
 /* StepTwo */
+
+.step__container--plans {
+  margin-top: 2.5rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.step__container--toggle_container {
+  margin-top: 2rem;
+  margin-left: 1rem;
+  padding: 1rem 0;
+  width: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--magnolia);
+}
+.step__container--toggle_container-slider {
+  display: flex;
+  align-items: center;
+}
+
+.step__container--toggle_container span {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--cool-gray);
+  margin: 0 1.5rem;
+
+  transition: color 200ms ease;
+}
+
+.step__container--toggle_container-slider label {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 25px;
+  border-radius: 15px;
+  background-color: var(--marine-blue);
+  cursor: pointer;
+}
+
+.step__container--toggle_container-slider label::before {
+  position: absolute;
+  content: '';
+  background-color: var(--white);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  margin: 3px;
+  transition: transform 200ms;
+}
+
+.step__container--toggle_container-slider input {
+  display: none;
+}
+
+.step__container--toggle_container-slider input:checked + label::before {
+  transform: translateX(25px);
+}
