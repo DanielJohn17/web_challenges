@@ -1,6 +1,7 @@
 import Sidebar from './container/Sidebar';
 // import StepOne from './container/StepOne';
-import StepTwo from './container/StepTwo';
+// import StepTwo from './container/StepTwo';
+import StepThree from './container/StepThree';
 
 // styles
 import './components/components_style.css';
@@ -11,7 +12,7 @@ const App = () => {
     <div className="container">
       <div className="sub-container">
         <Sidebar />
-        <StepTwo />
+        <StepThree />
       </div>
     </div>
   );

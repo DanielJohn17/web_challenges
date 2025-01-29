@@ -1,17 +1,27 @@
-// Pick add-ons
-// Add-ons help enhance your gaming experience.
+import AddOnCard from '../components/AddOnCard';
+import StepHeader from '../components/StepHeader';
+import Button from '../components/Button';
 
-// Online service
-// Access to multiplayer games
-// +$1/mo
+const StepThree = () => {
+  return (
+    <div className="step__container">
+      <StepHeader
+        title="Pick add-ons"
+        description="Add-ons help enhance your gaming experience."
+      />
 
-// Larger storage
-// Extra 1TB of cloud save
-// +$2/mo
+      <div className="step__container--add">
+        <AddOnCard />
+        <AddOnCard />
+        <AddOnCard />
+      </div>
 
-// Customizable Profile
-// Custom theme on your profile
-// +$2/mo
+      <div className="step__container--buttons">
+        <Button type="back">Go Back</Button>
+        <Button type="next">Next Step</Button>
+      </div>
+    </div>
+  );
+};
 
-// Go Back
-// Next Step
+export default StepThree;

@@ -194,3 +194,42 @@
   font-size: 1rem;
   color: var(--marine-blue);
 }
+
+/* AddOnCard */
+.addon__card {
+  width: 100%;
+  padding: 1.5rem;
+  border: 1px solid var(--light-gray);
+  border-radius: 10px;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  column-gap: 1.5rem;
+}
+
+.addon__card input[type='checkbox'] {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+}
+
+.addon__card--content h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--marine-blue);
+  margin-bottom: 0.5rem;
+}
+
+.addon__card--content p {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--cool-gray);
+}
+
+.addon__card--price {
+  margin-left: auto;
+  font-weight: 500;
+  color: var(--purplish-blue);
+}

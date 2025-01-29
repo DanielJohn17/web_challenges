@@ -97,3 +97,12 @@
 .step__container--toggle_container-slider input:checked + label::before {
   transform: translateX(25px);
 }
+
+/* StepThree */
+.step__container--add {
+  flex-grow: 1;
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
