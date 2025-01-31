@@ -1,10 +1,13 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+
+import { subscriptionContext } from '../context/context';
 
 import Button from '../components/Button';
 import InputInfo from '../components/InputInfo';
 import StepHeader from '../components/StepHeader';
 
 const StepOne = () => {
+  const subContext = useContext(subscriptionContext);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -21,10 +24,13 @@ const StepOne = () => {
   };
 
   const handleNextStep = () => {
-    if (!name || !email || !phone) {
-      setError(true);
-    } else {
+    if (name && email && phone) {
+      subContext['user'] = { name, email, phone };
+      console.log(subContext);
+      subContext.handleNextStep('/step-2');
       setError(false);
+    } else {
+      setError(true);
     }
   };
   return (
