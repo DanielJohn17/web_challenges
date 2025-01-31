@@ -66,6 +66,7 @@ const StepTwo = () => {
   };
 
   const handleBack = () => {
+    updateSubscriptionData({ user: null, plan: null, isYearly: false });
     handleBackStep('/');
   };
 
