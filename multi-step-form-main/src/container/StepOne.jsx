@@ -7,7 +7,9 @@ import InputInfo from '../components/InputInfo';
 import StepHeader from '../components/StepHeader';
 
 const StepOne = () => {
-  const subContext = useContext(subscriptionContext);
+  const { updateSubscriptionData, handleNextStep } =
+    useContext(subscriptionContext);
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -23,16 +25,15 @@ const StepOne = () => {
     setPhone(e.target.value);
   };
 
-  const handleNextStep = () => {
+  const handleNext = () => {
     if (name && email && phone) {
-      subContext['user'] = { name, email, phone };
-      console.log(subContext);
-      subContext.handleNextStep('/step-2');
-      setError(false);
+      updateSubscriptionData({ user: { name, email, phone } });
+      handleNextStep('/step-2');
     } else {
       setError(true);
     }
   };
+
   return (
     <div className="step__container">
       <div>
@@ -70,7 +71,7 @@ const StepOne = () => {
       </div>
 
       <div className="step__container--buttons">
-        <Button type="next" handleClick={handleNextStep}>
+        <Button type="next" handleClick={handleNext}>
           Next Step
         </Button>
       </div>

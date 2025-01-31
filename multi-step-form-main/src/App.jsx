@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router';
-// import { useEffect } from 'react';
+import { useState } from 'react';
 
 import StepLayout from './layouts/StepsLayout';
 import StepOne from './container/StepOne';
@@ -25,12 +25,12 @@ const App = () => {
 
 const AppRoutes = () => {
   const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   const handleFirstStep = () => navigate('/step-1');
-
-  //   handleFirstStep();
-  // }, []);
+  const [subscriptionData, setSubscriptionData] = useState({
+    user: null,
+    plan: null,
+    addOns: null,
+    isYearly: false,
+  });
 
   const handleNextStep = (nextLink) => {
     navigate(nextLink);
@@ -40,8 +40,22 @@ const AppRoutes = () => {
     navigate(backLink);
   };
 
+  const updateSubscriptionData = (newData) => {
+    setSubscriptionData((prevData) => ({
+      ...prevData,
+      ...newData,
+    }));
+  };
+
   return (
-    <subscriptionContext.Provider value={{ handleNextStep, handleBackStep }}>
+    <subscriptionContext.Provider
+      value={{
+        ...subscriptionData,
+        handleNextStep,
+        handleBackStep,
+        updateSubscriptionData,
+      }}
+    >
       <Routes>
         <Route path="/" element={<StepLayout />}>
           <Route index element={<StepOne />} />
