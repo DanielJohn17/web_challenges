@@ -233,3 +233,89 @@
   font-weight: 500;
   color: var(--purplish-blue);
 }
+
+/* Final Choice Card */
+.choice__card {
+  flex-grow: 1;
+  margin-top: 2.5rem;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.choice__card--summery {
+  background-color: var(--magnolia);
+  padding: 2.5rem 2rem;
+  border-radius: 10px;
+}
+
+.choice__card--summery .line-break {
+  margin: 2rem 0.25rem;
+  width: 100%;
+  height: 0.1px;
+  background-color: var(--light-gray);
+}
+
+.choice__card--summery_sub {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.choice__card--summery_sub span h3 {
+  font-size: 1.2rem;
+  color: var(--marine-blue);
+  margin-bottom: 0.5rem;
+}
+
+.choice__card--summery_sub span a {
+  color: var(--cool-gray);
+  font-weight: 500;
+}
+
+.choice__card--summery_sub p {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--marine-blue);
+}
+
+.choice__card--summery_other {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5rem;
+}
+
+.choice__card--summery_other div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.choice__card--summery_other div p {
+  color: var(--cool-gray);
+  font-weight: 500;
+}
+
+.choice__card--summery_other div p:last-child {
+  color: var(--marine-blue);
+}
+
+.choice__card--total {
+  padding: 2.5rem 2rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.choice__card--total p {
+  color: var(--cool-gray);
+  font-weight: 500;
+}
+
+.choice__card--total p:last-child {
+  color: var(--purplish-blue);
+  font-size: 1.35rem;
+  font-weight: 700;
+}
