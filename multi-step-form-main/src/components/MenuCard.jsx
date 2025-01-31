@@ -13,7 +13,7 @@ const MenuCard = ({ menu }) => {
         ${
           location.pathname === '/' && menu.number === 1
             ? `menu__card--num_active`
-            : location.pathname === '/step-4' && menu.number === 5
+            : location.pathname === '/step-5' && menu.number === 4
             ? `menu__card--num_active`
             : location.pathname === `/step-${menu.number}`
             ? `menu__card--num_active`

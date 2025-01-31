@@ -1,8 +1,23 @@
+import { useContext } from 'react';
+import { subscriptionContext } from '../context/context';
+
 import FinalChoiceCard from '../components/FinalChoiceCard';
 import StepHeader from '../components/StepHeader';
 import Button from '../components/Button';
 
 const StepFour = () => {
+  const { updateSubscriptionData, handleBackStep, handleNextStep } =
+    useContext(subscriptionContext);
+
+  const handleNext = () => {
+    handleNextStep('/step-5');
+  };
+
+  const handleBack = () => {
+    updateSubscriptionData({ addOns: null });
+    handleBackStep('/step-3');
+  };
+
   return (
     <div className="step__container">
       <StepHeader
@@ -13,8 +28,12 @@ const StepFour = () => {
       <FinalChoiceCard />
 
       <div className="step__container--buttons ">
-        <Button type="back">Go Back</Button>
-        <Button type="next">Confirm</Button>
+        <Button type="back" handleClick={handleBack}>
+          Go Back
+        </Button>
+        <Button type="next" handleClick={handleNext}>
+          Confirm
+        </Button>
       </div>
     </div>
   );
