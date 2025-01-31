@@ -106,3 +106,40 @@
   flex-direction: column;
   row-gap: 1rem;
 }
+
+/* StepFive */
+.step__container--center {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.step__container--center_icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.step__container--center_icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.step__container--center h1 {
+  margin-top: 2.5rem;
+  margin-bottom: 1.2rem;
+  font-size: 2.25rem;
+  color: var(--marine-blue);
+}
+
+.step__container--center p {
+  max-width: 550px;
+  text-align: center;
+  text-wrap: wrap;
+  font-size: 1.2rem;
+  line-height: 32px;
+  color: var(--cool-gray);
+}
