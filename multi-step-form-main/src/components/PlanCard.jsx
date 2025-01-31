@@ -10,12 +10,12 @@ const PlanCard = ({
   return (
     <div
       className="plan__card"
-      onClick={() => handleCardClicked(index)}
+      onClick={() => handleCardClicked(index, plan, yearlyPlan)}
       style={
-        cardClicked[index]
+        cardClicked.index === index
           ? {
               borderColor: 'var(--purplish-blue)',
-              background: 'rgb(calc(var(----purplish-blue)) / 0.5)',
+              backgroundColor: 'hsla(228, 100%, 84%, 0.05)',
             }
           : {}
       }
@@ -34,3 +34,11 @@ const PlanCard = ({
 };
 
 export default PlanCard;
+
+PlanCard.propTypes = {
+  plan: PropTypes.object.isRequired,
+  yearlyPlan: PropTypes.bool.isRequired,
+  index: PropTypes.number.isRequired,
+  cardClicked: PropTypes.object.isRequired,
+  handleCardClicked: PropTypes.func.isRequired,
+};

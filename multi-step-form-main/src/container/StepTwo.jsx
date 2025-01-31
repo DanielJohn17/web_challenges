@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+
+import { subscriptionContext } from '../context/context';
 
 import Button from '../components/Button';
 import StepHeader from '../components/StepHeader';
@@ -35,14 +37,36 @@ const plans = [
 ];
 
 const StepTwo = () => {
-  const [yearlyPlan, setYearlyPlan] = useState(true);
+  const { updateSubscriptionData, handleBackStep, handleNextStep } =
+    useContext(subscriptionContext);
+  const [yearlyPlan, setYearlyPlan] = useState(false);
   const [cardClicked, setCardClicked] = useState({});
 
-  const handleCardClicked = (index) => {
-    setCardClicked((prevState) => ({
-      ...prevState,
-      [index]: !prevState[index],
-    }));
+  const handleCardClicked = (index, plan, yearlyPlan) => {
+    if (yearlyPlan) {
+      setCardClicked({
+        index,
+        name: plan.name,
+        payment: plan.planPayment.yearly,
+      });
+    } else {
+      setCardClicked({
+        index,
+        name: plan.name,
+        payment: plan.planPayment.monthly,
+      });
+    }
+  };
+
+  const handleNext = () => {
+    if (!cardClicked.name || !cardClicked.payment) return;
+    updateSubscriptionData({ plan: cardClicked, isYearly: yearlyPlan });
+
+    handleNextStep('/step-3');
+  };
+
+  const handleBack = () => {
+    handleBackStep('/');
   };
 
   return (
@@ -88,8 +112,12 @@ const StepTwo = () => {
       </div>
 
       <div className="step__container--buttons">
-        <Button type="back">Go Back</Button>
-        <Button type="next">Next Step</Button>
+        <Button type="back" handleClick={handleBack}>
+          Go Back
+        </Button>
+        <Button type="next" handleClick={handleNext}>
+          Next Step
+        </Button>
       </div>
     </div>
   );
