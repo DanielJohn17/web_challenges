@@ -1,5 +1,6 @@
 import React from 'react';
 import { Logo, IconHamburger } from '../assets';
+import RequestButton from './RequestButton';
 
 type NavProps = {
   clicked: number | null;
@@ -24,12 +25,12 @@ const links = [
 
 const Nav = ({ clicked, handleClicked }: NavProps) => {
   return (
-    <nav className="w-full h-24 px-7 xl:px-52 flex justify-between items-center bg-custom-white z-10 text-lg relative">
+    <nav className="w-full h-24 px-7 xl:px-44 flex justify-between items-center bg-custom-white z-10 text-lg relative">
       <div className="w-36 my-6">
         <img src={Logo} alt="Easybank logo" className="w-full" />
       </div>
 
-      <ul className="hidden  xl:flex gap-5 text-grayish-blue h-full">
+      <ul className="hidden xl:flex gap-7 text-grayish-blue h-full">
         {links.map((link, index) => (
           <li
             key={index}
@@ -48,13 +49,7 @@ const Nav = ({ clicked, handleClicked }: NavProps) => {
         ))}
       </ul>
 
-      <button
-        className="hidden xl:block px-8 py-3 border rounded-full font-semibold cursor-pointer
-      text-custom-white gradient-to-right
-      hover:opacity-60 transition-opacity duration-200"
-      >
-        Request Invite
-      </button>
+      <RequestButton />
 
       <div className="xl:hidden">
         <img src={IconHamburger} alt="Hamburger icon" />
