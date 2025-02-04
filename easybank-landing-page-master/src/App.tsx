@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Nav from './components/Nav';
 import HeroSection from './containers/HeroSection';
 import About from './containers/About';
+import Article from './containers/Article';
 
 const App = () => {
   const [clicked, setClicked] = useState<number | null>(null);
@@ -19,6 +20,7 @@ const App = () => {
       <Nav clicked={clicked} handleClicked={handleClickedLink} />
       <HeroSection />
       <About />
+      <Article />
     </div>
   );
 };
