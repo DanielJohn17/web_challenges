@@ -59,3 +59,12 @@ The designs were created to the following widths:
 .gradient-to-right {
   @apply bg-gradient-to-r from-lime-green to-bright-cyan;
 }
+
+.svg-icon {
+  transition: filter 0.3s ease;
+}
+
+.svg-icon:hover {
+  filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(90deg)
+    brightness(100%) contrast(100%);
+}
