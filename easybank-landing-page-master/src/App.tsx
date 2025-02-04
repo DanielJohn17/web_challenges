@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Nav from './components/Nav';
 import HeroSection from './containers/HeroSection';
+import About from './containers/About';
 
 const App = () => {
   const [clicked, setClicked] = useState<number | null>(null);
@@ -17,6 +18,7 @@ const App = () => {
     <div className="w-screen min-h-screen font-public overflow-x-hidden">
       <Nav clicked={clicked} handleClicked={handleClickedLink} />
       <HeroSection />
+      <About />
     </div>
   );
 };
