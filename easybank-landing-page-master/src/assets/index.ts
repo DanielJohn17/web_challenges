@@ -17,6 +17,7 @@ import Favicon from './images/favicon-32x32.png';
 import ImageCofetti from './images/image-confetti.jpg';
 import ImageCurrency from './images/image-currency.jpg';
 import ImagePlane from './images/image-plane.jpg';
+import ImageMockups from './images/image-mockups.png';
 import ImageRestaurant from './images/image-restaurant.jpg';
 
 export {
@@ -38,5 +39,6 @@ export {
   ImageCofetti,
   ImageCurrency,
   ImagePlane,
+  ImageMockups,
   ImageRestaurant,
 };
