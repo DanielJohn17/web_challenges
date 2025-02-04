@@ -19,17 +19,17 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <div className="absolute h-screen -right-72 -top-64 z-0">
+      <div className="absolute h-screen -right-[458px] -top-52 z-0">
         <div className="relative h-full">
           <img
             src={BGIntroDesktop}
             alt="Mobile Banking"
-            className="w-full overflow-clip"
+            className="w-[85%] object-cover"
           />
           <img
             src={ImageMockups}
             alt="Mockups"
-            className="w-4xl z-10 absolute left-48 top-20 object-contain"
+            className="w-3xl z-10 absolute left-44 top-20 object-contain"
           />
         </div>
       </div>
