@@ -3,6 +3,7 @@ import Nav from './components/Nav';
 import HeroSection from './containers/HeroSection';
 import About from './containers/About';
 import Article from './containers/Article';
+import Footer from './containers/Footer';
 
 const App = () => {
   const [clicked, setClicked] = useState<number | null>(null);
@@ -21,6 +22,7 @@ const App = () => {
       <HeroSection />
       <About />
       <Article />
+      <Footer />
     </div>
   );
 };
