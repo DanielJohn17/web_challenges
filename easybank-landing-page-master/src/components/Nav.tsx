@@ -1,6 +1,9 @@
 import React from 'react';
 import { Logo, IconHamburger } from '../assets';
 import RequestButton from './RequestButton';
+import NavLink from './NavLink';
+import { links } from '../utils/NavLinksData';
+import useWindowSize from '../utils/windowSize';
 
 type NavProps = {
   clicked: number | null;
@@ -10,20 +13,8 @@ type NavProps = {
   ) => void;
 };
 
-type NavLinkPrps = {
-  href?: string;
-  children: React.ReactNode;
-};
-
-const links = [
-  { href: '/home', text: 'Home' },
-  { href: '/about', text: 'About' },
-  { href: '/contact', text: 'Contact' },
-  { href: '/blog', text: 'Blog' },
-  { href: '/careers', text: 'Careers' },
-] as const;
-
 const Nav = ({ clicked, handleClicked }: NavProps) => {
+  const { width } = useWindowSize();
   return (
     <nav className="w-full h-24 px-7 xl:px-44 flex justify-between items-center bg-custom-white z-10 text-lg relative">
       <div className="w-36 my-6">
@@ -49,17 +40,14 @@ const Nav = ({ clicked, handleClicked }: NavProps) => {
         ))}
       </ul>
 
-      <RequestButton />
+      <RequestButton display={width >= 1440 ? true : false} />
 
+      {/* Mobile display */}
       <div className="xl:hidden">
         <img src={IconHamburger} alt="Hamburger icon" />
       </div>
     </nav>
   );
-};
-
-const NavLink = ({ href, children }: NavLinkPrps) => {
-  return <a href={href || '/'}>{children}</a>;
 };
 
 export default Nav;

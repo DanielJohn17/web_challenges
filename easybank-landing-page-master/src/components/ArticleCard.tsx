@@ -7,7 +7,7 @@ type ArticleCardProps = {
 
 const ArticleCard = ({ image, author, title, content }: ArticleCardProps) => {
   return (
-    <div className="w-[300px] flex flex-col bg-custom-white rounded-lg">
+    <div className="mx-auto w-[300px] flex flex-col bg-custom-white rounded-lg">
       <div className="w-full h-52 rounded-t-lg mb-5">
         <img
           src={image}
