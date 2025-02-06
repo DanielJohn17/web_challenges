@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
 import { BGIntroDesktop, ImageMockups, BGIntroMobile } from '../assets';
 import RequestButton from '../components/RequestButton';
+import MobileNavigation from '../components/MobileNavigation';
 
-const HeroSection = () => {
+import type { MobileNavigationProps } from '../lib/types';
+
+const HeroSection = ({ openNav, handleOpenNav }: MobileNavigationProps) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1440);
 
   useEffect(() => {
@@ -18,11 +21,11 @@ const HeroSection = () => {
   }, [isMobile]);
   return (
     <div className="w-full h-screen bg-very-light-gray flex flex-col-reverse xl:flex-row items-center relative">
-      <div className="px-9 xl:px-0 xl:pl-40 flex flex-col items-center xl:items-start mb-16 text-lg max-w-[612px]">
-        <h1 className="text-center xl:text-left text-[40px] xl:text-6xl leading-12 xl:leading-16 text-dark-blue font-light mb-6">
+      <div className="px-9 flex flex-col items-center mb-16 text-lg max-w-[612px] xl:px-0 xl:pl-40 xl:items-start">
+        <h1 className="text-center text-[40px] leading-12 text-dark-blue font-light mb-6 xl:text-left xl:text-6xl xl:leading-16">
           Next generation digital banking
         </h1>
-        <p className="text-center text-grayish-blue xl:text-left text-wrap mb-10">
+        <p className="text-center text-grayish-blue text-wrap mb-10 xl:text-left">
           Take your financial life online. Your Easybank account will be a
           one-stop-shop for spending, saving, budgeting, investing, and much
           more.
@@ -62,6 +65,9 @@ const HeroSection = () => {
           </div>
         </div>
       )}
+
+      {/* Mobile Navigation */}
+      <MobileNavigation openNav={openNav} handleOpenNav={handleOpenNav} />
     </div>
   );
 };

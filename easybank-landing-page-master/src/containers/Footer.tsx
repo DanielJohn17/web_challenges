@@ -4,9 +4,12 @@ import { iconLinks, links } from '../utils/FooterData';
 
 const Footer = () => {
   return (
-    <div className="w-full h-56 px-40 border text-custom-white bg-dark-blue flex justify-between items-center">
-      <div className="flex gap-32 items-center">
-        <div className="flex flex-col gap-14">
+    <div
+      className="w-full h-fit py-12 mx-auto border text-custom-white bg-dark-blue flex flex-col justify-between items-center
+    gap-12 xl:h-56 xl:flex-row xl:px-40"
+    >
+      <div className="flex flex-col gap-8 items-center xl:flex-row xl:gap-32">
+        <div className="flex flex-col gap-8 xl:gap-14">
           <div>
             <LogoWhite />
           </div>
@@ -24,7 +27,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="h-24 flex flex-col flex-wrap gap-x-48 gap-y-3">
+        <div className="h-auto flex flex-col flex-wrap gap-x-48 gap-y-3 xl:h-24">
           {links.map((link, index) => (
             <a
               key={index}
@@ -37,8 +40,8 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="flex flex-col items-end gap-8">
-        <RequestButton />
+      <div className="flex flex-col items-center gap-8 xl:items-end">
+        <RequestButton display={true} />
         <p className="text-grayish-blue text-sm">
           &copy; Easybank. All Rights Reserved
         </p>

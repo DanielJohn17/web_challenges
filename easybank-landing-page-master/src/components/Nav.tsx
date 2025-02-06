@@ -1,5 +1,5 @@
 import React from 'react';
-import { Logo, IconHamburger } from '../assets';
+import { Logo, IconHamburger, IconClose } from '../assets';
 import RequestButton from './RequestButton';
 import NavLink from './NavLink';
 import { links } from '../utils/NavLinksData';
@@ -11,9 +11,11 @@ type NavProps = {
     e: React.MouseEvent<HTMLLIElement, MouseEvent>,
     index: number,
   ) => void;
+  openNav: boolean;
+  handleOpenNav: () => void;
 };
 
-const Nav = ({ clicked, handleClicked }: NavProps) => {
+const Nav = ({ clicked, handleClicked, openNav, handleOpenNav }: NavProps) => {
   const { width } = useWindowSize();
   return (
     <nav className="w-full h-24 px-7 xl:px-44 flex justify-between items-center bg-custom-white z-10 text-lg relative">
@@ -43,8 +45,8 @@ const Nav = ({ clicked, handleClicked }: NavProps) => {
       <RequestButton display={width >= 1440 ? true : false} />
 
       {/* Mobile display */}
-      <div className="xl:hidden">
-        <img src={IconHamburger} alt="Hamburger icon" />
+      <div className="xl:hidden" onClick={handleOpenNav}>
+        <img src={openNav ? IconClose : IconHamburger} alt="Hamburger icon" />
       </div>
     </nav>
   );
