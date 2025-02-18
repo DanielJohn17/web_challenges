@@ -4,6 +4,7 @@ import { matchedData, validationResult } from 'express-validator';
 import User from '../models/user';
 import { UserType } from '../types/models';
 import { ErrorType, NewUserType } from '../types/response';
+import { authCookie } from '../utils/authCookies';
 
 const SALT = 10;
 
@@ -39,6 +40,12 @@ export const register = async (
     });
 
     await user.save();
+
+    authCookie(response, {
+      _id: user.id,
+      email: user.email,
+      role: user.role,
+    });
 
     response.status(201).json({
       name: user.name,
