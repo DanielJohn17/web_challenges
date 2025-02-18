@@ -2,7 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import connectDB from './config/db';
-import { login, register } from './controllers/authController';
+import { login, logout, register } from './controllers/authController';
 import registerValidtor from './middlewares/registerValidator';
 import loginValidator from './middlewares/loginValidator';
 
@@ -29,6 +29,7 @@ app.get('/', (req, res) => {
 
 app.post('/api/auth/register', registerValidtor, register);
 app.post('/api/auth/login', loginValidator, login);
+app.post('/api/auth/logout', logout);
 
 app.listen(PORT, () => {
   connectDB();

@@ -113,3 +113,26 @@ export const login = async (
     }
   }
 };
+
+export const logout = async (
+  request: Request,
+  response: Response<
+    | {
+        message: string;
+      }
+    | ErrorType
+  >,
+) => {
+  try {
+    clearAuthCookie(response);
+    response.json({ message: 'Logout successfully' });
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      response.status(500).json({ message: error.message });
+      return;
+    } else {
+      response.status(500).json({ message: 'An unknown error occurred' });
+      return;
+    }
+  }
+};
