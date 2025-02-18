@@ -12,24 +12,23 @@ export const register = async (
   request: Request<{}, {}, UserType>,
   response: Response<ResponseUserType | ErrorType>,
 ): Promise<void> => {
-  const result = validationResult(request);
-  if (!result.isEmpty()) {
-    response
-      .status(400)
-      .json({ message: result.array().map((error) => error.msg) });
-    return;
-  }
-
-  const { name, email, password } = matchedData(request);
-
-  const userExists = await User.findOne({ $or: [{ email }, { name }] });
-
-  if (userExists) {
-    response.status(400).json({ message: 'User already exists' });
-    return;
-  }
-
   try {
+    const result = validationResult(request);
+    if (!result.isEmpty()) {
+      response
+        .status(400)
+        .json({ message: result.array().map((error) => error.msg) });
+      return;
+    }
+
+    const { name, email, password } = matchedData(request);
+
+    const userExists = await User.findOne({ $or: [{ email }, { name }] });
+
+    if (userExists) {
+      response.status(400).json({ message: 'User already exists' });
+      return;
+    }
     const hashedPassword = await bcrypt.hash(password, SALT);
 
     const user = new User({
