@@ -62,4 +62,50 @@ export const register = async (
   }
 };
 
-export const login = async (request: Request, response: Response) => {};
+export const login = async (
+  request: Request,
+  response: Response<ResponseUserType | ErrorType>,
+) => {
+  try {
+    const result = validationResult(request);
+
+    if (!result.isEmpty()) {
+      response
+        .status(400)
+        .json({ message: result.array().map((error) => error.msg) });
+      return;
+    }
+
+    const { email, password } = matchedData(request);
+
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      response.status(400).json({ message: 'Invalid email or password' });
+      return;
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    if (!isMatch) {
+      response.status(400).json({ message: 'Invalid email or password' });
+      return;
+    }
+
+    authCookie(response, { _id: user.id, email: user.email, role: user.role });
+
+    response.status(200).json({
+      name: user.name,
+      email: user.email,
+      role: user.role,
+    });
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      response.status(500).json({ message: error.message });
+      return;
+    } else {
+      response.status(500).json({ message: 'An unknown error occurred' });
+      return;
+    }
+  }
+};

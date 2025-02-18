@@ -2,8 +2,9 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import connectDB from './config/db';
-import { register } from './controllers/authController';
+import { login, register } from './controllers/authController';
 import registerValidtor from './middlewares/registerValidator';
+import loginValidator from './middlewares/loginValidator';
 
 dotenv.config();
 
@@ -27,6 +28,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/api/auth/register', registerValidtor, register);
+app.post('/api/auth/login', loginValidator, login);
 
 app.listen(PORT, () => {
   connectDB();
