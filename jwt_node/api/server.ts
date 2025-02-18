@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 
 app.post('/api/auth/register', registerValidtor, register);
 app.post('/api/auth/login', loginValidator, login);
-app.post('/api/auth/logout', logout);
+app.delete('/api/auth/logout', logout);
 
 app.listen(PORT, () => {
   connectDB();
