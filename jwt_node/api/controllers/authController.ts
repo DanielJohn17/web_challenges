@@ -20,7 +20,7 @@ export const register = async (
     return;
   }
 
-  const { name, email, password, role } = matchedData(request);
+  const { name, email, password } = matchedData(request);
 
   const userExists = await User.findOne({ $or: [{ email }, { name }] });
 
@@ -36,7 +36,7 @@ export const register = async (
       name,
       email,
       password: hashedPassword,
-      role,
+      role: 'customer',
     });
 
     await user.save();
