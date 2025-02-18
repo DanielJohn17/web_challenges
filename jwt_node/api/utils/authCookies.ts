@@ -10,7 +10,7 @@ const cookieOptions = {
   maxAge,
 };
 
-export const authCookie = (response: Response, user: UserPayload) => {
+export const setAuthCookie = (response: Response, user: UserPayload) => {
   const token = generateToken(user);
 
   response.cookie('auth_cookie', token, cookieOptions);
