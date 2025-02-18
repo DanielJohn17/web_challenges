@@ -3,14 +3,14 @@ import { Request, Response } from 'express';
 import { matchedData, validationResult } from 'express-validator';
 import User from '../models/user';
 import { UserType } from '../types/models';
-import { ErrorType, NewUserType } from '../types/response';
+import { ErrorType, ResponseUserType } from '../types/response';
 import { authCookie } from '../utils/authCookies';
 
 const SALT = 10;
 
 export const register = async (
   request: Request<{}, {}, UserType>,
-  response: Response<NewUserType | ErrorType>,
+  response: Response<ResponseUserType | ErrorType>,
 ): Promise<void> => {
   const result = validationResult(request);
   if (!result.isEmpty()) {

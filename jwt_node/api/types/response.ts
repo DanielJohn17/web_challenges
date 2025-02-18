@@ -1,4 +1,4 @@
-export type NewUserType = {
+export type ResponseUserType = {
   name: string;
   email: string;
   role: 'admin' | 'customer';
