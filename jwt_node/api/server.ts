@@ -6,6 +6,9 @@ import cookieParser from 'cookie-parser';
 import { login, logout, register } from './controllers/authController';
 import registerValidtor from './middlewares/registerValidator';
 import loginValidator from './middlewares/loginValidator';
+import verifyToken from './utils/verifyToken';
+import { getUserData, getUsers } from './controllers/userController';
+import roleMiddleWare from './middlewares/roleMiddleware';
 
 dotenv.config();
 
@@ -33,6 +36,14 @@ app.get('/', (req, res) => {
 app.post('/api/auth/register', registerValidtor, register);
 app.post('/api/auth/login', loginValidator, login);
 app.delete('/api/auth/logout', logout);
+
+app.get('/api/user/admin', verifyToken, roleMiddleWare('admin'), getUsers);
+app.get(
+  '/api/user/customer',
+  verifyToken,
+  roleMiddleWare('admin', 'customer'),
+  getUserData,
+);
 
 app.listen(PORT, () => {
   connectDB();
