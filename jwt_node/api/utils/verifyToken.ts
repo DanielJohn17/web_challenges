@@ -9,7 +9,7 @@ const verifyToken = async (
   next: NextFunction,
 ) => {
   try {
-    const token = request.cookies?.auth_token;
+    const token = request.cookies?.auth_cookie;
 
     if (!token) {
       response.status(401).json({ message: 'Unauthorized' });
@@ -18,7 +18,7 @@ const verifyToken = async (
 
     const decoded = jwt.verify(
       token,
-      process.env.JWT_SECRET as string,
+      process.env.SECRET_KEY as string,
     ) as UserPayload;
 
     request.user = decoded;
