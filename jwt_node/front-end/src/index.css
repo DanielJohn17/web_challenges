@@ -1,1 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Jersey+15&family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 @import 'tailwindcss';
+
+@theme {
+  --font-roboto: 'Roboto', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+  --font-public-sans: 'Public Sans', sans-serif;
+  --font-jersey: 'Jersey 15', sans-serif;
+
+  --color-custom-black: #1a1a1a;
+  --color-custom-white: #f9f9f9;
+  --color-custom-gray: #f2f2f2;
+  --color-custom-blue: #1a73e8;
+  --color-custom-red: #ff0000;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
