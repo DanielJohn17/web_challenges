@@ -7,11 +7,14 @@ import {
   TableHead,
   TableRow,
 } from '@mui/material';
-import { useEffect, useState } from 'react';
-import { User } from '../context/UserContext';
+import { useContext, useEffect, useState } from 'react';
+import { User, UserContext } from '../context/UserContext';
+import { useNavigate } from 'react-router';
 
 const Users = () => {
   const [rows, setRows] = useState<User[] | null>(null);
+  const user = useContext(UserContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -36,8 +39,16 @@ const Users = () => {
       }
     };
 
-    fetchUsers();
-  }, []);
+    const getRole = () => {
+      if (user?.role !== 'admin') {
+        navigate('/');
+      } else {
+        fetchUsers();
+      }
+    };
+
+    getRole();
+  }, [navigate, user]);
   return (
     <div className="w-full h-full flex items-center justify-center">
       <TableContainer component={Paper} sx={{ maxWidth: 900 }}>
