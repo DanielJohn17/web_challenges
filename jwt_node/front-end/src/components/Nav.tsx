@@ -1,5 +1,7 @@
 import { Button } from '@mui/material';
 import { NavLink } from 'react-router';
+import { useContext } from 'react';
+import { UserContext } from '../context/UserContext';
 
 type CustomLinkProps = {
   to: string;
@@ -7,6 +9,7 @@ type CustomLinkProps = {
 };
 
 const Nav = () => {
+  const user = useContext(UserContext);
   return (
     <nav className="w-full h-48 bg-custom-blue flex justify-between items-center px-14 text-white">
       <h1 className="text-5xl font-semibold">
