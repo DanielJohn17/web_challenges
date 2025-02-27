@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { TextField } from '@mui/material';
 import CustomButton from '../components/Button';
 import { NavLink, useNavigate } from 'react-router';
-// import Cookies from 'js-cookie';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errors, setErrors] = useState<string[] | string>();
   const navigate = useNavigate();
 
   const handleEmail = (
@@ -36,6 +36,8 @@ const Login = () => {
       });
 
       if (!response.ok) {
+        const errorData = await response.json();
+        setErrors(errorData.message);
         throw new Error('Login failed');
       }
 
@@ -81,6 +83,19 @@ const Login = () => {
               >
                 Don't have an account? Register
               </NavLink>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              {errors &&
+                (typeof errors === 'string' ? (
+                  <p className="text-red-500">{errors}</p>
+                ) : (
+                  errors.map((error) => (
+                    <p key={error} className="text-red-500">
+                      {error}
+                    </p>
+                  ))
+                ))}
             </div>
           </div>
           <CustomButton type="login" handleClick={handleLogin} />
