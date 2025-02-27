@@ -23,7 +23,7 @@ export const register = async (
 
     const { name, email, password } = matchedData(request);
 
-    const userExists = await User.findOne({ $or: [{ email }, { name }] });
+    const userExists = await User.findOne({ email });
 
     if (userExists) {
       response.status(400).json({ message: 'User already exists' });
