@@ -29,8 +29,6 @@ const Users = () => {
         }
 
         const data = await response.json();
-
-        console.log(data);
         setRows(data);
       } catch (error: unknown) {
         if (error instanceof Error) console.log(`Error: ${error.message}`);
