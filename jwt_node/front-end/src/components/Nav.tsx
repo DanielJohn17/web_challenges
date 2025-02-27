@@ -1,6 +1,6 @@
 import { Button } from '@mui/material';
-import { NavLink } from 'react-router';
 import { useContext } from 'react';
+import { NavLink, useNavigate } from 'react-router';
 import { UserContext } from '../context/UserContext';
 
 type CustomLinkProps = {
@@ -10,6 +10,26 @@ type CustomLinkProps = {
 
 const Nav = () => {
   const user = useContext(UserContext);
+  const navigate = useNavigate();
+  const handleLogout = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/auth/logout', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+      });
+
+      if (!response.ok) {
+        throw new Error('Logout failed');
+      }
+      navigate('/login');
+    } catch (error: unknown) {
+      if (error instanceof Error) console.log(`Error: ${error.message}`);
+      else console.log('Unkown Error Occured');
+    }
+  };
   return (
     <nav className="w-full h-48 bg-custom-blue flex justify-between items-center px-14 text-white">
       <h1 className="text-5xl font-semibold">
@@ -30,6 +50,7 @@ const Nav = () => {
           variant="contained"
           color="error"
           sx={{ width: '100%', fontSize: '1.1rem', color: 'white' }}
+          onClick={handleLogout}
         >
           Logout
         </Button>
