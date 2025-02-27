@@ -13,13 +13,11 @@ export const getUsers = async (
     const users = await User.find();
 
     const usersData = users.map((user) => {
-      if (user.role !== 'admin') {
-        return {
-          name: user.name,
-          email: user.email,
-          role: user.role,
-        };
-      }
+      return {
+        name: user.name,
+        email: user.email,
+        role: user.role,
+      };
     }) as ResponseUserType[];
 
     response.status(200).json(usersData);
