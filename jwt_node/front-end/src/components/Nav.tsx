@@ -11,6 +11,7 @@ type CustomLinkProps = {
 const Nav = () => {
   const user = useContext(UserContext);
   const navigate = useNavigate();
+
   const handleLogout = async () => {
     try {
       const response = await fetch('http://localhost:5000/api/auth/logout', {
@@ -30,19 +31,22 @@ const Nav = () => {
       else console.log('Unkown Error Occured');
     }
   };
+
   return (
     <nav className="w-full h-48 bg-custom-blue flex justify-between items-center px-14 text-white">
       <h1 className="text-5xl font-semibold">
-        Hello, <span className="font-light">name</span>
+        Hello, <span className="font-light">{user?.name}</span>
       </h1>
 
       <ul className="flex gap-14">
         <li className="text-2xl">
           <CustomLink to={'/'}>Me</CustomLink>
         </li>
-        <li className="text-2xl">
-          <CustomLink to={'/users'}>Users</CustomLink>
-        </li>
+        {user?.role === 'admin' && (
+          <li className="text-2xl">
+            <CustomLink to={'/users'}>Users</CustomLink>
+          </li>
+        )}
       </ul>
 
       <div className="w-3xs flex">
