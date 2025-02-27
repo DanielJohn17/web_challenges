@@ -1,6 +1,10 @@
 import { TextField } from '@mui/material';
+import { UserContext } from '../context/UserContext';
+import { useContext } from 'react';
 
 const MePage = () => {
+  const user = useContext(UserContext);
+
   return (
     <div className="w-full h-full flex items-center justify-center">
       <div>
