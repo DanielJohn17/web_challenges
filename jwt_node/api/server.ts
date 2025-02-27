@@ -37,9 +37,9 @@ app.post('/api/auth/register', registerValidtor, register);
 app.post('/api/auth/login', loginValidator, login);
 app.delete('/api/auth/logout', logout);
 
-app.get('/api/user/admin', verifyToken, roleMiddleWare('admin'), getUsers);
+app.get('/api/user/all', verifyToken, roleMiddleWare('admin'), getUsers);
 app.get(
-  '/api/user/customer',
+  '/api/user/me',
   verifyToken,
   roleMiddleWare('admin', 'customer'),
   getUserData,
