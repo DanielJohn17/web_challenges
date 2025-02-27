@@ -1,9 +1,10 @@
 import { BrowserRouter, Route, Routes } from 'react-router';
-import Login from './pages/Login';
-import Dashboard from './pages/Dashboard';
-import Register from './pages/Register';
-import MePage from './pages/Me';
-import Users from './pages/Users';
+import { lazy, useState } from 'react';
+const Login = lazy(() => import('./pages/Login'));
+const Dashboard = lazy(() => import('./pages/Dashboard'));
+const Register = lazy(() => import('./pages/Register'));
+const MePage = lazy(() => import('./pages/Me'));
+const Users = lazy(() => import('./pages/Users'));
 
 function App() {
   return (
