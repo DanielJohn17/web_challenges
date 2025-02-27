@@ -70,6 +70,7 @@ const Login = () => {
               label="Password"
               variant="outlined"
               value={password}
+              type="password"
               onChange={(e) => handlePassword(e)}
             />
 
